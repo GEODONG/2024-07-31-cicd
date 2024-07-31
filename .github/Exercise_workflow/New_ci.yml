@@ -11,9 +11,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
-      - uses: https://gitlab.com/da_doomer/markdown-slides
+          python-version: "3.11"
+      # - uses: https://gitlab.com/da_doomer/markdown-slides
+      - name:
+        run: pip install git+https://gitlab.com/da_doomer/markdown-slides
       - uses: actions/upload-pages-artifact
       - uses: actions/deploy-pages
