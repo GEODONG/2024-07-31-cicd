@@ -17,7 +17,9 @@ jobs:
             python-version: "3.9"
     runs-on: ${{ matrix.os }}
     steps:
-      - run: echo "myvar=42" >> $GITHUB_ENV
+      - id: step1
+        run: echo "myvar=42" >> $GITHUB_ENV
+      - run: echo "myvar = ${{ steps.step1.outputs.myvar }}"
       - run: echo $myvar
       - run: echo ${{ env.myvar }}
       - run: echo Hello world.
