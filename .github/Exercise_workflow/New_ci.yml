@@ -1,0 +1,19 @@
+name: Exercise
+
+on: 
+  pull_request:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: https://gitlab.com/da_doomer/markdown-slides
+      - uses: actions/upload-pages-artifact
+      - uses: actions/deploy-pages
